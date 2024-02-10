@@ -1,62 +1,0 @@
-Script started on 2024-01-30 16:16:57-07:00 [TERM="xterm-256color" TTY="/dev/pts/105" COLUMNS="148" LINES="41"]
-
-Disk quotas for user hamza.siddiqui (uid 33230102): 
-     Filesystem   space   quota   limit   grace   files   quota   limit   grace
-10.44.125.21:/CSUSERS
-                  8744K  10240M  10240M              56    100k    100k        
-
-]0;hamza.siddiqui@csa1:~[?2004h[UC hamza.siddiqui@csa1 ~] gdb assign1a[Kb
-[?2004l[35;1mGNU gdb (GDB) Fedora Linux 13.2-6.fc38[m
-Copyright (C) 2023 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <[32mhttp://gnu.org/licenses/gpl.html[m>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Type "show copying" and "show warranty" for details.
-This GDB was configured as "aarch64-redhat-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-[32m<https://www.gnu.org/software/gdb/bugs/>[m.
-Find the GDB manual and other documentation resources online at:
-    <[32mhttp://www.gnu.org/software/gdb/documentation/[m>.
-
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from [32massign1b[m...
-[?2004h(gdb) b prit[Knting[C[C
-[?2004lBreakpoint 1 at [34m0x41023c[m: file [32massign1b.s[m, line 66.
-[?2004h(gdb) r
-[?2004lStarting program: [32m/home/csusers/hamza.siddiqui/assign1b[m 
-
-This GDB supports auto-downloading debuginfo from the following URLs:
-  <[32mhttps://debuginfod.fedoraproject.org/[m>
-[?2004hEnable debuginfod for this session? (y or [n]) y
-[?2004lDebuginfod has been enabled.
-To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
-Downloading separate debug info for [32msystem-supplied DSO at 0xfffff7ffb000[m
-[###                                                                                                                                             ]                                                                                                                                                                                                                                                                                                        [Thread debugging using libthread_db enabled]
-Using host libthread_db library "[32m/lib64/libthread_db.so.1[m".
-
-Breakpoint 1, [33mprinting[m () at [32massign1b.s[m:66
-66	        adrp x[35m0[m[31m,[m fmt
-[?2004h[?2004l[?2004h(gdb) p $x19[K[K20
-[?2004l$1 = 123
-[?2004h(gdb) p $x19
-[?2004l$2 = -10
-[?2004h(gdb) r[Kx[Kp $x23
-[?2004l$3 = 123
-[?2004h(gdb) c
-[?2004lContinuing.
-x = -10, y = 123, current min y = 123
-
-Breakpoint 1, [33mprinting[m () at [32massign1b.s[m:66
-66	        adrp x[35m0[m[31m,[m fmt
-[?2004h[?2004l[?2004h(gdb) quit
-[?2004l[?2004hA debugging session is active.
-
-	Inferior 1 [process 498632] will be killed.
-
-Quit anyway? (y or n) y
-[?2004l]0;hamza.siddiqui@csa1:~[?2004h[UC hamza.siddiqui@csa1 ~] exit
-[?2004lexit
-
-Script done on 2024-01-30 16:36:46-07:00 [COMMAND_EXIT_CODE="0"]
