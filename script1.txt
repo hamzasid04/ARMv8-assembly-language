@@ -1,255 +1,0 @@
-Script started on 2024-01-30 15:06:06-07:00 [TERM="xterm-256color" TTY="/dev/pts/17" COLUMNS="120" LINES="30"]
-
-Disk quotas for user hamza.siddiqui (uid 33230102): 
-     Filesystem   space   quota   limit   grace   files   quota   limit   grace
-10.44.125.21:/CSUSERS
-                   220K  10240M  10240M              47    100k    100k        
-
-]0;hamza.siddiqui@csa1:~[?2004h[UC hamza.siddiqui@csa1 ~] gdb assign1a
-[?2004l[35;1mGNU gdb (GDB) Fedora Linux 13.2-6.fc38[m
-Copyright (C) 2023 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <[32mhttp://gnu.org/licenses/gpl.html[m>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Type "show copying" and "show warranty" for details.
-This GDB was configured as "aarch64-redhat-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-[32m<https://www.gnu.org/software/gdb/bugs/>[m.
-Find the GDB manual and other documentation resources online at:
-    <[32mhttp://www.gnu.org/software/gdb/documentation/[m>.
-
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from [32massign1a[m...
-[?2004h(gdb) b main
-[?2004lBreakpoint 1 at [34m0x4101cc[m: file [32massign1a.s[m, line 14.
-[?2004h(gdb) r
-[?2004lStarting program: [32m/home/csusers/hamza.siddiqui/assign1a[m 
-
-This GDB supports auto-downloading debuginfo from the following URLs:
-  <[32mhttps://debuginfod.fedoraproject.org/[m>
-[?2004hEnable debuginfod for this session? (y or [n]) y
-[?2004lDebuginfod has been enabled.
-To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
-Downloading separate debug info for [32msystem-supplied DSO at 0xfffff7ffb000[m
-[###                                                                                                                 ]                                                                                                                        Downloading separate debug info for [32m/lib64/libc.so.6[m
-[###                                                                                                                 ][ ###                                                                                                                ]                                                                                                                        [Thread debugging using libthread_db enabled]
-Using host libthread_db library "[32m/lib64/libthread_db.so.1[m".
-
-Breakpoint 1, [33mmain[m () at [32massign1a.s[m:14
-14	[01;34mmain:[m stp x[35m29[m[31m,[m x[35m30[m[31m,[m [31m[[m[32msp[m[31m,[m [31m-[m[35m16[m[31m]![m  [31m//[mallocates [35m16[m bytes [01;34min[m RAM
-[?2004h[?2004l[?2004h(gdb) r
-[?2004l[?2004hThe program being debugged has been started already.
-Start it from the beginning? (y or n) y
-[?2004lStarting program: [32m/home/csusers/hamza.siddiqui/assign1a[m 
-                                                                                                                                                                                                                                                [Thread debugging using libthread_db enabled]
-Using host libthread_db library "[32m/lib64/libthread_db.so.1[m".
-
-Breakpoint 1, [33mmain[m () at [32massign1a.s[m:14
-14	[01;34mmain:[m stp x[35m29[m[31m,[m x[35m30[m[31m,[m [31m[[m[32msp[m[31m,[m [31m-[m[35m16[m[31m]![m  [31m//[mallocates [35m16[m bytes [01;34min[m RAM
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l16	        [01;34mmov[m x[35m29[m[31m,[m [32msp[m
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l18	        [01;34mmov[m x[35m21[m[31m,[m [31m-[m[35m10[m            [31m//[massigning [01;34mor[m moving variables to values
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l19	        [01;34mmov[m x[35m22[m[31m,[m [35m4[m
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l20	        [01;34mmov[m x[35m23[m[31m,[m [35m5000[m           [31m//[mWill be Min value of Y[31m.[m Assigned [35m5000[m for strating if statemnt
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l21	        [01;34mmov[m x[35m19[m[31m,[m x[35m21[m            [31m//[mWill be the current x [31m.[mAssigns x to minimun value of X possible within the range given
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l22	        [01;34mmov[m x[35m20[m[31m,[m [35m0[m              [31m//[mwill be the current y
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l23	        [01;34mmov[m x[35m25[m[31m,[m [35m0[m              [31m//[mtemporary register
-[?2004h[?2004l[?2004h(gdb) display[K[K[K[K[K[K[Kni
-[?2004l24	        [01;34mmov[m x[35m24[m[31m,[m [35m0[m              [31m//[m will be the x found for lowest value of y
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l[33mtest[m () at [32massign1a.s[m:26
-26	        [01;34mcmp[m x[35m19[m[31m,[m [35m4[m
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l27	        b[31m.[m[01;34mgt[m [01;34mend[m                [31m//[m program will stop executing once x reaches maximum value of [35m4[m
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l28	        b calc          [31m//[mgo to calculations to continue
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l[33mcalc[m () at [32massign1a.s[m:29
-29	[01;34mcalc:[m   [01;34mmov[m x[35m20[m[31m,[m [35m0[m      [31m//[my is reset to [35m0[m just [01;34min[m case
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l31	        [01;34mmov[m x[35m25[m[31m,[m [35m3[m              [31m//[m [35m3[m[31m*[mx[31m^[m[35m3[m calulations
-[?2004h[?2004l[?2004h(gdb) display $x19
-[?2004l1: $x19 = -10
-[?2004h(gdb) nin[K[K[Kdispal[K[Klay $x20
-[?2004l2: $x20 = 0
-[?2004h(gdb) ni
-[?2004l32	        [01;34mmul[m x[35m25[m[31m,[m x[35m25[m[31m,[m x[35m19[m
-1: $x19 = -10
-2: $x20 = 0
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l33	        [01;34mmul[m x[35m25[m[31m,[m x[35m25[m[31m,[m x[35m19[m
-1: $x19 = -10
-2: $x20 = 0
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l34	        [01;34mmul[m x[35m25[m[31m,[m x[35m25[m[31m,[m x[35m19[m
-1: $x19 = -10
-2: $x20 = 0
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l35	        [01;34madd[m x[35m20[m[31m,[m x[35m20[m[31m,[m x[35m25[m
-1: $x19 = -10
-2: $x20 = 0
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l37	        [01;34mmov[m x[35m25[m[31m,[m [35m31[m             [31m//[m [35m31[m[31m*[mx[31m^[m[35m2[m calculations
-1: $x19 = -10
-2: $x20 = -3000
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l38	        [01;34mmul[m x[35m25[m[31m,[m x[35m25[m[31m,[m x[35m19[m
-1: $x19 = -10
-2: $x20 = -3000
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l39	        [01;34mmul[m x[35m25[m[31m,[m x[35m25[m[31m,[m x[35m19[m
-1: $x19 = -10
-2: $x20 = -3000
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l40	        [01;34madd[m x[35m20[m[31m,[m x[35m20[m[31m,[m x[35m25[m
-1: $x19 = -10
-2: $x20 = -3000
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l42	        [01;34mmov[m x[35m25[m[31m,[m [31m-[m[35m15[m            [31m//[m [31m-[m[35m15[mx calculations
-1: $x19 = -10
-2: $x20 = 100
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l43	        [01;34mmul[m x[35m25[m[31m,[m x[35m25[m[31m,[m x[35m19[m
-1: $x19 = -10
-2: $x20 = 100
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l44	        [01;34madd[m x[35m20[m[31m,[m x[35m20[m[31m,[m x[35m25[m
-1: $x19 = -10
-2: $x20 = 100
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l46	        [01;34msub[m x[35m20[m[31m,[m x[35m20[m[31m,[m [35m127[m
-1: $x19 = -10
-2: $x20 = 250
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l48	        [01;34mcmp[m x[35m20[m[31m,[m x[35m23[m            [31m//[m if newer y is less than prev[31m.[m y[31m,[m the prev[31m.[m y [31m([myMin[31m)[m will be updated to have
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) m[Kni
-[?2004l50	        b[31m.[m[01;34mlt[m update_y_min
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l[33mupdate_y_min[m () at [32massign1a.s[m:53
-53	        [01;34mmov[m x[35m23[m[31m,[m x[35m20[m    [31m//[mmin y found will be at x[35m23[m
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l54	        [01;34mmov[m x[35m24[m[31m,[m x[35m19[m    [31m//[m min x found that produces min y will be at x[35m24[m
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l[33mprinting[m () at [32massign1a.s[m:58
-58	        adrp x[35m0[m[31m,[m fmt
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l59	        [01;34madd[m x[35m0[m[31m,[m x[35m0[m[31m,[m [31m:[mlo[35m12[m[31m:[m fmt
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l61	        [01;34mmov[m x[35m1[m[31m,[m x[35m19[m     [31m//[m x value display
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l62	        [01;34mmov[m x[35m2[m[31m,[m x[35m20[m     [31m//[m y value display
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l63	        [01;34mmov[m x[35m3[m[31m,[m x[35m23[m     [31m//[mmin Y value display
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) no[Ki
-[?2004l65	        [32mbl[m printf
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004lx = -10, y = 123, current min y = 123
-67	        [01;34madd[m x[35m19[m[31m,[m x[35m19[m[31m,[m [35m1[m         [31m//[mincrement x by [35m1[m
-1: $x19 = -10
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l68	        b [01;34mtest[m          [31m//[m return to [01;34mtest[m if [01;34mloop[m must be repeated
-1: $x19 = -9
-2: $x20 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004lx = -9, y = 332, current min y = 123
-67	        [01;34madd[m x[35m19[m[31m,[m x[35m19[m[31m,[m [35m1[m         [31m//[mincrement x by [35m1[m
-1: $x19 = -9
-2: $x20 = 332
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l68	        b [01;34mtest[m          [31m//[m return to [01;34mtest[m if [01;34mloop[m must be repeated
-1: $x19 = -8
-2: $x20 = 332
-[?2004h[?2004l[?2004h(gdb) display x[K#[K$x19
-[?2004l3: $x19 = -8
-[?2004h(gdb) display $x20
-[?2004l4: $x20 = 332
-[?2004h(gdb) display x[K$x23
-[?2004l5: $x23 = 123
-[?2004h(gdb) ni
-[?2004lx = -8, y = 441, current min y = 123
-67	        [01;34madd[m x[35m19[m[31m,[m x[35m19[m[31m,[m [35m1[m         [31m//[mincrement x by [35m1[m
-1: $x19 = -8
-2: $x20 = 441
-3: $x19 = -8
-4: $x20 = 441
-5: $x23 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l68	        b [01;34mtest[m          [31m//[m return to [01;34mtest[m if [01;34mloop[m must be repeated
-1: $x19 = -7
-2: $x20 = 441
-3: $x19 = -7
-4: $x20 = 441
-5: $x23 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004lx = -7, y = 468, current min y = 123
-67	        [01;34madd[m x[35m19[m[31m,[m x[35m19[m[31m,[m [35m1[m         [31m//[mincrement x by [35m1[m
-1: $x19 = -7
-2: $x20 = 468
-3: $x19 = -7
-4: $x20 = 468
-5: $x23 = 123
-[?2004h[?2004l[?2004h(gdb) p $x20
-[?2004l$1 = 468
-[?2004h(gdb) p $x19
-[?2004l$2 = -7
-[?2004h(gdb) ni
-[?2004l68	        b [01;34mtest[m          [31m//[m return to [01;34mtest[m if [01;34mloop[m must be repeated
-1: $x19 = -6
-2: $x20 = 468
-3: $x19 = -6
-4: $x20 = 468
-5: $x23 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004lx = -6, y = 431, current min y = 123
-67	        [01;34madd[m x[35m19[m[31m,[m x[35m19[m[31m,[m [35m1[m         [31m//[mincrement x by [35m1[m
-1: $x19 = -6
-2: $x20 = 431
-3: $x19 = -6
-4: $x20 = 431
-5: $x23 = 123
-[?2004h[?2004l[?2004h(gdb) ni
-[?2004l68	        b [01;34mtest[m          [31m//[m return to [01;34mtest[m if [01;34mloop[m must be repeated
-1: $x19 = -5
-2: $x20 = 431
-3: $x19 = -5
-4: $x20 = 431
-5: $x23 = 123
-[?2004h[?2004l[?2004h(gdb) quit
-[?2004l[?2004hA debugging session is active.
-
-	Inferior 1 [process 447166] will be killed.
-
-Quit anyway? (y or n) y
-[?2004l]0;hamza.siddiqui@csa1:~[?2004h[UC hamza.siddiqui@csa1 ~] exit
-[?2004lexit
-
-Script done on 2024-01-30 15:14:47-07:00 [COMMAND_EXIT_CODE="0"]
