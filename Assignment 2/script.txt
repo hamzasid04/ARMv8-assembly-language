@@ -1,0 +1,544 @@
+Script started on 2024-02-09 16:24:36-07:00 [TERM="xterm-256color" TTY="/dev/pts/60" COLUMNS="176" LINES="48"]
+
+Disk quotas for user hamza.siddiqui (uid 33230102):
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+10.44.125.21:/CSUSERS
+                   151M  10240M  10240M            2782    100k    100k
+
+[UC hamza.siddiqui@csa1 ~] gdb assign2a
+GNU gdb (GDB) Fedora Linux 13.2-6.fc38
+Copyright (C) 2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "aarch64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from assign2a...
+(gdb) b main
+Breakpoint 1 at 0x410208: file assign2a.s, line 30.
+(gdb) b print_initial
+Breakpoint 2 at 0x41021c: file assign2a.s, line 40.
+(gdb) b negative_or_not
+Breakpoint 3 at 0x410238: file assign2a.s, line 50.
+(gdb) b initial_loop
+Breakpoint 4 at 0x410250: file assign2a.s, line 57.
+(gdb) b print_prod_multiplier
+Function "print_prod_multiplier" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) no
+(gdb) b print_prod_multpier
+Breakpoint 5 at 0x410298: file assign2a.s, line 86.
+(gdb) b end
+Breakpoint 6 at 0x4102d8: file assign2a.s, line 111.
+(gdb) r
+Starting program: /home/csusers/hamza.siddiqui/assign2a
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.fedoraproject.org/>
+Enable debuginfod for this session? (y or [n]) yes
+Debuginfod has been enabled.
+To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
+Downloading separate debug info for system-supplied DSO at 0xfffff7ffb000
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main () at assign2a.s:30
+30      main: stp x29, x30, [sp, -16]!  //allocates 16 bytes in RAM
+(gdb) ni
+32              mov x29, sp
+(gdb) ni
+35              mov w20, -16843010      // Set w20 to -16843010
+(gdb) ni
+36              mov w19, 70             // Set w19 to 70
+(gdb) ni
+37              mov w21, 0                      // Set w21 to 0
+(gdb) ni
+
+Breakpoint 2, print_initial () at assign2a.s:40
+40              adrp x0, initial_val    // Get address of initial_val format string
+(gdb) ni
+41              add x0, x0, :lo12: initial_val  // Add the lower 12 bits of the address to x0
+(gdb) ni
+43              mov w1, w19     // move w19 value into w1 register
+(gdb) ni
+44              mov w2, w19     // move w19 value into w2 register
+(gdb) ni
+45              mov w3, w20     // move w19 value into w3 register
+(gdb) display $w19
+1: $w19 = 70
+(gdb) display $w22
+2: $w22 = 4260020
+(gdb) display $w22
+3: $w22 = 4260020
+(gdb) ni
+46              mov w4, w20     // move w19 value into w4 register
+1: $w19 = 70
+2: $w22 = 4260020
+3: $w22 = 4260020
+(gdb) ni
+47              bl printf               // call printf function and print initialv values
+1: $w19 = 70
+2: $w22 = 4260020
+3: $w22 = 4260020
+(gdb) ni
+w19 = 0x00000046 (70) w20 = 0xfefefefe (-16843010)
+
+
+Breakpoint 3, negative_or_not () at assign2a.s:50
+50              mov w22, 0                              //Initialize w22 here
+1: $w19 = 70
+2: $w22 = 4260020
+3: $w22 = 4260020
+(gdb) ni
+51              cmp w19,0                       // Compare w19 to 0
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+52              b.ge multiplierIsNotNegative            //If w19 is greater or equal to 0, branch to multiplierIsNotNegative
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+multiplierIsNotNegative () at assign2a.s:55
+55      multiplierIsNotNegative: mov w23, 0             // If w19 is not w23, set w23 flag to 0
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb)
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+58              b.ge adjust_negative    // If w22 is greater or equal to 32, branch to adjust_negative
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+59              b compare1              // Otherwise, branch to compare1
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb)
+compare1 () at assign2a.s:61
+61              tst w19, 0x1    // Test least significant bit of w19
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+62              b.eq compare2           // Test and statement. If x19 of AND stmt. eq to 0, branch to productIsFalse. If not then continue with the code below.
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+compare2 () at assign2a.s:68
+68              asr w19, w19, 1         // Arithmetic shift right w19 by 1
+1: $w19 = 70
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+69              tst w21, 0x1                    // Test and statement. If x19 of AND stmt. eq to 0, branch to productIsFalse. If not then continue with the code below
+1: $w19 = 35
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+70              b.eq productIsFalse                     // If least significant bit of w21 is 0, branch to productIsFalse
+1: $w19 = 35
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+productIsFalse () at assign2a.s:74
+74              and w19, w19, 0x7fffffff        // Clear most significant bit of w19 if w21's least significant bit is 0
+1: $w19 = 35
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+step2 () at assign2a.s:77
+77              asr w21, w21, 1         // Arithmetic shift right w21 by 1
+1: $w19 = 35
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+78              add w22, w22, 1                 //Increment the w22 for the loop
+1: $w19 = 35
+2: $w22 = 0
+3: $w22 = 0
+(gdb) ni
+79              b initial_loop                  // Branch back to the beginning of the loop
+1: $w19 = 35
+2: $w22 = 1
+3: $w22 = 1
+(gdb) ni
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 35
+2: $w22 = 1
+3: $w22 = 1
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 17
+2: $w22 = 2
+3: $w22 = 2
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 2147483656
+2: $w22 = 3
+3: $w22 = 3
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1073741828
+2: $w22 = 4
+3: $w22 = 4
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 2684354562
+2: $w22 = 5
+3: $w22 = 5
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3489660929
+2: $w22 = 6
+3: $w22 = 6
+(gdb)
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3892314112
+2: $w22 = 7
+3: $w22 = 7
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1946157056
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+58              b.ge adjust_negative    // If w22 is greater or equal to 32, branch to adjust_negative
+1: $w19 = 1946157056
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+59              b compare1              // Otherwise, branch to compare1
+1: $w19 = 1946157056
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+compare1 () at assign2a.s:61
+61              tst w19, 0x1    // Test least significant bit of w19
+1: $w19 = 1946157056
+2: $w22 = 8
+3: $w22 = 8
+(gdb)
+62              b.eq compare2           // Test and statement. If x19 of AND stmt. eq to 0, branch to productIsFalse. If not then continue with the code below.
+1: $w19 = 1946157056
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+compare2 () at assign2a.s:68
+68              asr w19, w19, 1         // Arithmetic shift right w19 by 1
+1: $w19 = 1946157056
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+69              tst w21, 0x1                    // Test and statement. If x19 of AND stmt. eq to 0, branch to productIsFalse. If not then continue with the code below
+1: $w19 = 973078528
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+70              b.eq productIsFalse                     // If least significant bit of w21 is 0, branch to productIsFalse
+1: $w19 = 973078528
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+71              orr w19, w19, 0x80000000        // Set the most significant bit of w19
+1: $w19 = 973078528
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+72              b step2         //Imp to go to branch step2 or else it will go to else statement below to ProdIsFalse
+1: $w19 = 3120562176
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+step2 () at assign2a.s:77
+77              asr w21, w21, 1         // Arithmetic shift right w21 by 1
+1: $w19 = 3120562176
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+78              add w22, w22, 1                 //Increment the w22 for the loop
+1: $w19 = 3120562176
+2: $w22 = 8
+3: $w22 = 8
+(gdb) ni
+79              b initial_loop                  // Branch back to the beginning of the loop
+1: $w19 = 3120562176
+2: $w22 = 9
+3: $w22 = 9
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3120562176
+2: $w22 = 9
+3: $w22 = 9
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1560281088
+2: $w22 = 10
+3: $w22 = 10
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 780140544
+2: $w22 = 11
+3: $w22 = 11
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 2537553920
+2: $w22 = 12
+3: $w22 = 12
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3416260608
+2: $w22 = 13
+3: $w22 = 13
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3855613952
+2: $w22 = 14
+3: $w22 = 14
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1927806976
+2: $w22 = 15
+3: $w22 = 15
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3111387136
+2: $w22 = 16
+3: $w22 = 16
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3703177216
+2: $w22 = 17
+3: $w22 = 17
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1851588608
+2: $w22 = 18
+3: $w22 = 18
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 925794304
+2: $w22 = 19
+3: $w22 = 19
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 2610380800
+2: $w22 = 20
+3: $w22 = 20
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3452674048
+2: $w22 = 21
+3: $w22 = 21
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3873820672
+2: $w22 = 22
+3: $w22 = 22
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1936910336
+2: $w22 = 23
+3: $w22 = 23
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3115938816
+2: $w22 = 24
+3: $w22 = 24
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3705453056
+2: $w22 = 25
+3: $w22 = 25
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1852726528
+2: $w22 = 26
+3: $w22 = 26
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 926363264
+2: $w22 = 27
+3: $w22 = 27
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 2610665280
+2: $w22 = 28
+3: $w22 = 28
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3452816288
+2: $w22 = 29
+3: $w22 = 29
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3873891792
+2: $w22 = 30
+3: $w22 = 30
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 1936945896
+2: $w22 = 31
+3: $w22 = 31
+(gdb) c
+Continuing.
+
+Breakpoint 4, initial_loop () at assign2a.s:57
+57              cmp w22, 32             // Compare loop counter w22 to 32
+1: $w19 = 3115956596
+2: $w22 = 32
+3: $w22 = 32
+(gdb) c
+Continuing.
+
+Breakpoint 5, print_prod_multpier () at assign2a.s:86
+86              adrp x0, prod_multpier_val              // Load address of prod_multpier_val format string
+1: $w19 = 3115956596
+2: $w22 = 32
+3: $w22 = 32
+(gdb) c
+Continuing.
+w21 = 0xffffffff w19 = 0xb9b9b974
+64-bit x19 = 0xffffffffb9b9b974 (-1179010700)
+
+Breakpoint 6, end () at assign2a.s:111
+111             mov w0, 0                       // restoring regsiters to 0 (return 0)
+1: $w19 = 3115956596
+2: $w22 = 32
+3: $w22 = 32
+(gdb) ni
+112             ldp     x29, x30, [sp], 16      // Load the frame pointer and link register back from the stack, and deallocate the stack space
+1: $w19 = 3115956596
+2: $w22 = 32
+3: $w22 = 32
+(gdb) ni
+end () at assign2a.s:113
+113             ret                             // Return to caller
+1: $w19 = 3115956596
+2: $w22 = 32
+3: $w22 = 32
+(gdb) ni
+__libc_start_call_main (main=0x4100b4 <_start+52>, main@entry=0x20, argc=1, argc@entry=0, argv=0xfffffffff2e8, argv@entry=0xffffffffb9b9b974)
+    at ../sysdeps/nptl/libc_start_call_main.h:74
+Downloading source file /usr/src/debug/glibc-2.37-18.fc38.aarch64/csu/../sysdeps/nptl/libc_start_call_main.h
+74        exit (result);
+1: $w19 = 3115956596
+2: $w22 = 32
+3: $w22 = 32
+(gdb) display $w20
+4: $w20 = 0
+(gdb) ni
+[Inferior 1 (process 962417) exited normally]
+(gdb) quit
+[UC hamza.siddiqui@csa1 ~] exit
+exit
+
+Script done on 2024-02-09 16:28:28-07:00 [COMMAND_EXIT_CODE="0"]
